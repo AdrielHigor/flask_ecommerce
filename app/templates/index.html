@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Formulário</title>
+</head>
+
+<body>
+    <form class="container">
+        <fieldset class="form-group">
+            <legend style="padding:20px 0; font-size:20px;">Informações Pessoais:</legend>
+            <div class="row form-group">
+                <div class="col">
+                    <label for="Name">Nome</label>
+                    <input type="name" class="form-control" id="Name" placeholder="Digite seu nome">
+                </div>
+                <div class="col">
+                    <label for="Name">Sobrenome</label>
+                    <input type="lastName" class="form-control" id="LastName" placeholder="Digite seu sobrenome">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="email" class="form-control" id="Email" placeholder="Digite seu email">
+            </div>
+
+            <div class="form-group">
+                <label for="selecionar">Cidade</label>
+                <select class="custom-select" id="selecionar">
+                    <option selected>--</option>
+                    <option value="1">Cajazeiras</option>
+                    <option value="2">Cachoeira dos Indios</option>
+                    <option value="3">Sousa</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="textarea">Pedido de Suporte</label>
+                <textarea class="form-control" id="textarea" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="fileUpload">Screenshot do Problema</label>
+                <input type="file" class="form-control-file" id="fileUpload">
+            </div>
+
+            <div class="form-group">
+                <p style="padding-top:10px;">Tipo de Erro</p>
+                <div class="form-check form-check-inline" id="teste">
+                    <input class="form-check-input" type="radio" name="sexo" id="radio1" value="Masculino">
+                    <label class="form-check-label" for="radio1">Hardware</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="sexo" id="radio2" value="Feminino">
+                    <label class="form-check-label" for="radio2">Software</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="sexo" id="radio3" value="Outro">
+                    <label class="form-check-label" for="radio3">Outro</label>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+                <legend style="padding:20px 0; font-size:20px;">Contratos:</legend>
+            <div class="form-group" style="padding-top:10px;">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Termos">
+                    <label class="form-check-label" for="checkbox1">Eu aceito os <a href="">Termos e Condições,
+                            Política de
+                            Privacidade e Política de Cookies</a></label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Atualizacao">
+                    <label class="form-check-label" for="checkbox2">Mantenha-me atualizado sobre tudo o que está
+                        acontecendo
+                        nas aulas de Diego</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                    <label class="form-check-label" for="checkbox3">Para que os anúncios não sejam exibidos no site.
+                        Eu
+                        aceito usar o meu computador para minerar bitcoins enquanto estiver acessando esta
+                        página.</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="cancel" class="btn btn-secondary">Cancelar</button>
+        </fieldset>
+    </form>
+</body>
+
+</html>
