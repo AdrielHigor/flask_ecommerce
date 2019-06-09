@@ -1,3 +1,3 @@
-from app import app
+from Ifood import app
 
-app.run(debug=True, host='10.3.135.188', port='8000')
+app.run(debug=True, host='0.0.0.0', port='8000')

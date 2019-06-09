@@ -1,0 +1,27 @@
+{# myapp/templates/macros.html #}
+
+{% macro nav_link(endpoint, text) %}
+{% if request.endpoint.endswith(endpoint) %}
+<li class="nav-item active"><a class="nav-link" href="{{ url_for(endpoint) }}">{{text}}</a></li>
+{% else %}
+<li class="nav-item"><a class="nav-link" href="{{ url_for(endpoint) }}">{{text}}</a></li>
+{% endif %}
+{% endmacro %}
+
+{% macro carousel_number() %}
+{% for product in products %}
+<li data-target="#carouselExampleCaptions" data-slide-to="{{product.id}}" class="active"></li>
+{% endfor %}
+{% endmacro %}
+
+{% macro carousel_image() %}
+{% for product in products %}
+<div class="carousel-item active">
+    <img src="{{product.product_img}}" class="d-block w-100" alt="...">
+    <div class="carousel-caption d-none d-md-block">
+        <h5>{{product.product_name}}</h5>
+        <p>{{product.product_desc}}</p>
+    </div>
+</div>
+{% endfor %}
+{% endmacro %}
