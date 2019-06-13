@@ -1,3 +1,3 @@
 from Ifood import app
-
-app.run(debug=True, host='10.0.0.109', port='8000')
+if __name__ == "__main__":
+    app.run(debug=True, host='192.168.2.18', port='8000')

@@ -1,5 +1,7 @@
 from Ifood import db
 from sqlalchemy import Column, ForeignKey, Integer, Unicode, String, Float
+from sqlalchemy_imageattach.entity import Image, image_attachment
+from sqlalchemy.orm import relationship
 from flask_appbuilder.models.mixins import ImageColumn
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -23,7 +25,13 @@ class User(db.Model):
 class Product(db.Model):
     id = Column(Integer, primary_key=True, unique=True)
     product_name = Column(String(120), index=True)
-    product_img = Column(ImageColumn(
-        size=(300, 300, True), thumbnail_size=(30, 30, True)))
+    product_imgs = image_attachment('ProductImage', uselist=True)
     product_desc = Column(String(120), index=True)
     price = Column(Float, index=True)
+
+class ProductImage(db.Model, Image):
+    product_id = Column(Integer, ForeignKey(Product.id), primary_key=True)
+    product = relationship(Product)
+    order_index = Column(Integer, primary_key=True)
+
+

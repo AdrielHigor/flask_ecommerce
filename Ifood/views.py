@@ -21,6 +21,8 @@ def login():
 @app.route('/produto/cadastro', methods=['GET', 'POST'])
 def upload_file():
    form = ProductForm()
+   if request.method == 'POST' and form.validate():
+      product = Product(form.name.data, )
    return render_template('Admin/Register/form.html', form=form)
 	
 @app.route('/uploader', methods = ['GET', 'POST'])
