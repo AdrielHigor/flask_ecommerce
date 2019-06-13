@@ -4,8 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import os
 
-
-UPLOAD_FOLDER = 'Ifood/static/uploads/'
+UPLOAD_FOLDER = '/Ifood/static/uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
