@@ -2,41 +2,9 @@ from flask import render_template, request, redirect, url_for
 
 from Ifood import app, db, ALLOWED_EXTENSIONS
 from Ifood.models import User, Product
-from Ifood.forms import LoginForm
+from Ifood.forms import LoginForm, ProductForm
 from werkzeug import secure_filename
 import os
-
-# def allowed_file(filename):
-#     return '.' in filename and \
-#            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-# @app.route('/teste', methods=['GET', 'POST'])
-# def teste():
-#     if request.method == 'POST':
-#         # check if the post request has the file part
-#         if 'file' not in request.files:
-#             flash('No file part')
-#             return redirect(request.url)
-#         file = request.files['file']
-#         # if user does not select file, browser also
-#         # submit a empty part without filename
-#         if file.filename == '':
-#             flash('No selected file')
-#             return redirect(request.url)
-#         if file and allowed_file(file.filename):
-#             filename = secure_filename(file.filename)
-#             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-#             return redirect(url_for('uploaded_file',
-#                                     filename=filename))
-#     return '''
-#     <!doctype html>
-#     <title>Upload new File</title>
-#     <h1>Upload new File</h1>
-#     <form method=post enctype=multipart/form-data>
-#       <p><input type=file name=file>
-#          <input type=submit value=Upload>
-#     </form>
-#     '''
 
 
 @app.route('/')
@@ -48,17 +16,19 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    return render_template('Auth/index.html', form=form)
+    return render_template('Auth/form.html', form=form)
 
-@app.route('/upload')
+@app.route('/Register', methods=['GET', 'POST'])
 def upload_file():
-   return render_template('uploads/upload.html')
+   form = ProductForm()
+   return render_template('Admin/Register/form.html', form=form)
 	
 @app.route('/uploader', methods = ['GET', 'POST'])
 def uploader():
    if request.method == 'POST':
-      f = request.files['file']
-      filename = secure_filename(f.filename)
-      print(os.path.join(app.config['UPLOAD_FOLDER']))
-      #f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      file = request.files['file']
+      filename = secure_filename(file.filename)
+      print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      basedir = os.path.abspath(os.path.dirname(__file__))
+      file.save(os.path.join(basedir, app.config['UPLOAD_FOLDER'], filename))
       return 'file uploaded successfully'
