@@ -18,7 +18,7 @@ def login():
     form = LoginForm()
     return render_template('Auth/form.html', form=form)
 
-@app.route('/Register', methods=['GET', 'POST'])
+@app.route('/produto/cadastro', methods=['GET', 'POST'])
 def upload_file():
    form = ProductForm()
    return render_template('Admin/Register/form.html', form=form)

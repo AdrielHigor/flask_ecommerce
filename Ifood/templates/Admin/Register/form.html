@@ -13,16 +13,40 @@
         </div>
         <div class="form-group">
             {{ form.description.label }}<br>
-            {{ form.description(size=32, class="form-control", rows=5) }}
+            {{ form.description(size=32, class="form-control", rows=5, placeholder='ex: 
+
+Não há pessoa no mundo que resista a uma boa feijoada. O feijão-preto, as carnes e os acompanhamentos fazem deste prato um dos maiores símbolos de nossa cozinha. Deu água na boca? Então não perca tempo e compre logo este prato maravilhoso.
+
+Ingredientes: 
+1 Kg de feijão preto
+100 g de carne seca
+70 g de orelha de porco
+70 g de rabo de porco
+70 g de pé de porco
+100 g de costelinha de porco
+50 g de lombo de porco
+100 g de paio
+150 g de lingüiça portuguesa
+
+Tempero:
+2 cebolas grandes picadinhas
+1 maço de cebolinha verde picadinha
+3 folhas de louro
+6 dentes de alho
+Pimenta do reino a gosto
+1 ou 2 laranjas
+40 ml de de pinga
+Sal se precisar') }}
         </div>
         <div class="form-group">
             {{ form.images.label }}
             {{ form.images(class="form-control-file") }}
         </div>
-        <div class="form-group">
-            {{form.price.label}}
-            <label for="Preço">R$</label>
-            {{form.price(class="")}}
+        <div class="form-group row">
+            {{form.price.label(class="col-sm-2 col-form-label")}}
+            <div class="col-sm-10">
+                {{form.price(class="form-control", placeholder="ex : 20,00")}}
+            </div>
         </div>
         {{ form.submit(class="btn btn-primary") }}
     </form>

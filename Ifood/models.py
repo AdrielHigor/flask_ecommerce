@@ -1,5 +1,5 @@
 from Ifood import db
-from sqlalchemy import Column, ForeignKey, Integer, Unicode, String
+from sqlalchemy import Column, ForeignKey, Integer, Unicode, String, Float
 from flask_appbuilder.models.mixins import ImageColumn
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -26,3 +26,4 @@ class Product(db.Model):
     product_img = Column(ImageColumn(
         size=(300, 300, True), thumbnail_size=(30, 30, True)))
     product_desc = Column(String(120), index=True)
+    price = Column(Float, index=True)
