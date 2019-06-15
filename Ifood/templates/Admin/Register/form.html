@@ -5,7 +5,7 @@
 {{ super() }}
 <div class="container">
     <h1>Cadastrar Produto</h1>
-    <form action="" method="post" novalidate>
+    <form action="" method="post" novalidate enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <div class="form-group">
             {{ form.name.label }}<br>
@@ -22,11 +22,11 @@ Ingredientes:
 100 g de carne seca
 70 g de orelha de porco
 70 g de rabo de porco
-70 g de pé de porco
+70 g de pé de sandra
 100 g de costelinha de porco
 50 g de lombo de porco
 100 g de paio
-150 g de lingüiça portuguesa
+150 g de lingüiça de GuilhermB
 
 Tempero:
 2 cebolas grandes picadinhas
@@ -42,6 +42,10 @@ Sal se precisar') }}
             {{ form.images.label }}
             {{ form.images(class="form-control-file") }}
         </div>
+        <div class="form-group">
+                {{ form.file.label }}
+                {{ form.file(class="form-control-file") }}
+            </div>
         <div class="form-group row">
             {{form.price.label(class="col-sm-2 col-form-label")}}
             <div class="col-sm-10">

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block body %}
+{{ super() }}
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Produto</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Preço</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for product in products %}
+        <tr>
+            <th scope="row">{{product.id}}</th>
+            <td>{{product.name}}</td>
+            <td>{{product.desc}}</td>
+            <td>R${{product.price}}0</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

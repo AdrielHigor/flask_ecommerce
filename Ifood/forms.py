@@ -18,6 +18,7 @@ class ProductForm(FlaskForm):
         ])
     description = TextAreaField('Descrição')
     images = MultipleFileField('Imagens do Produto')
+    file = FileField('Thumbnail do Produto')
     price = StringField("Preço R$:", validators=[
         DataRequired(message="Este campo é obrigatório")
     ])

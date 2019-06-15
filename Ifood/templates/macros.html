@@ -10,18 +10,19 @@
 
 {% macro carousel_number() %}
 {% for product in products %}
-<li data-target="#carouselExampleCaptions" data-slide-to="{{product.id}}" class="active"></li>
+<li data-slide-to="{{product.id}}" class="active"></li>
 {% endfor %}
 {% endmacro %}
 
 {% macro carousel_image() %}
-{% for product in products %}
-<div class="carousel-item active">
-    <img src="{{product.product_img}}" class="d-block w-100" alt="...">
-    <div class="carousel-caption d-none d-md-block">
-        <h5>{{product.product_name}}</h5>
-        <p>{{product.product_desc}}</p>
+<div class="carousel-inner">
+    {% for product in products %}
+    <div class="carousel-item {% if loop.index == 1 %} active{% endif %}">
+        <img src="{{product.thumbnail}}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>{{product.name}}</h5>
+            <p>{{product.desc}}</p>
+        </div>
     </div>
-</div>
-{% endfor %}
+    {% endfor %}
 {% endmacro %}
