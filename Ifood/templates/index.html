@@ -1,7 +1,7 @@
 {# _myapp/templates/index.html_ #}
 
 {% extends "layout.html" %}
-{% from "macros.html" import carousel_image, carousel_number with context %}
+{% from "macros.html" import carousel_image, popular_product_list, new_product_list, sale_product_list, carousel_number with context %}
 {% block title %}Hello world!{% endblock %}
 {% block body %}
 {{ super() }}
@@ -21,4 +21,25 @@
         </a>
     </div>
 </div>
+
+<div class="container">
+    <a href="#" class="modified_a"><h3 class="h3">Novos Itens</h3></a>
+    <div class="row">
+        {{new_product_list()}}
+    </div>
+</div>
+<div class="container">
+    <a href="#" class="modified_a"><h3 class="h3">Mais Vendidos</h3></a>
+    <div class="row">
+        {{popular_product_list()}}
+    </div>
+</div>
+<div class="container">
+    <a href="/produto/listar" class="modified_a"><h3 class="h3">Em Promoção</h3></a>
+    <div class="row">
+        {{sale_product_list()}}
+    </div>
+</div>
+
+<hr>
 {% endblock %}

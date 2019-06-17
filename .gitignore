@@ -66,6 +66,7 @@ db.sqlite3
 # Flask stuff:
 instance/
 .webassets-cache
+/static/uploads/
 
 # Scrapy stuff:
 .scrapy

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+{{ super() }}
+<ul class="tab-content list-unstyled">
+    <h1>Produtos</h1>
+    {% for product in products %}
+    <a class="list-group-item list-group-item-action" href="#" role="tab">
+        <li class="media list-group-item">
+            <img src="{{product.thumbnail}}" class="mr-3" width="64" height="64">
+            <div class="media-body">
+                <h5 class="mt-0 mb-1">Produto: {{product.name}}</h5>
+                <p>Descrição: {{product.desc}}</p>
+                <p>Valor Unitário: R${{"%.2f" % product.price}}</p>
+            </div>
+        </li>
+    </a>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -22,4 +22,6 @@ class ProductForm(FlaskForm):
     price = StringField("Preço R$:", validators=[
         DataRequired(message="Este campo é obrigatório")
     ])
+    discount = StringField("Desconto:")
+    tag = StringField("Tag do produto")
     submit = SubmitField('Cadastrar')

@@ -9,14 +9,14 @@
 {% endmacro %}
 
 {% macro carousel_number() %}
-{% for product in products %}
+{% for product in carousel_products %}
 <li data-slide-to="{{product.id}}" class="active"></li>
 {% endfor %}
 {% endmacro %}
 
 {% macro carousel_image() %}
 <div class="carousel-inner">
-    {% for product in products %}
+    {% for product in carousel_products %}
     <div class="carousel-item {% if loop.index == 1 %} active{% endif %}">
         <img src="{{product.thumbnail}}" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
@@ -25,4 +25,134 @@
         </div>
     </div>
     {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro new_product_list() %}
+{% for product in new_products %}
+<div class="col-md-3 col-sm-6">
+    <div class="product-grid">
+        <div class="product-image">
+            <a href="#">
+                <img class="pic-1" src="{{product.thumbnail}}">
+            </a>
+            <ul class="social">
+                <li><a href="" data-tip="Visualizar"><i class="fa fa-search"></i></a></li>
+                <li><a href="" data-tip="lista de desejo"><i class="fa fa-shopping-bag"></i></a></li>
+                <li><a href="" data-tip="Add Carrinho"><i class="fa fa-shopping-cart"></i></a></li>
+            </ul>
+            {% if product.tag %}
+            <span class="product-new-label">{{product.tag}}</span>
+            {% endif %}
+            {% if product.discount %}
+                <span class="product-discount-label">{{product.discount}}%</span>
+            {% endif %}
+        </div>
+        <ul class="rating">
+            <li class="fa fa-star"></li>
+            <li class="fa fa-star"></li>
+            <li class="fa fa-star"></li>
+            <li class="fa fa-star"></li>
+            <li class="fa fa-star disable"></li>
+        </ul>
+        <div class="product-content">
+            <h3 class="title"><a href="#">{{product.name}}</a></h3>
+            {% if product.discount %}
+            <div class="price">R${{"%.2f" %(product.price - (product.price* (product.discount/100)))}}
+                <span>R${{"%.2f" % product.price}}</span>
+            </div>
+            {% else %}
+            <div class="price">R${{"%.2f" %product.price}}</div>
+            {% endif %}
+            <a class="add-to-cart" href="">+ Adicionar ao Carrinho</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endmacro %}
+
+{% macro popular_product_list() %}
+{% for product in popular_products %}
+<div class="col-md-3 col-sm-6">
+    <div class="product-grid">
+        <div class="product-image">
+            <a href="#">
+                <img class="pic-1" src="{{product.thumbnail}}">
+            </a>
+            <ul class="social">
+                <li><a href="" data-tip="Visualizar"><i class="fa fa-search"></i></a></li>
+                <li><a href="" data-tip="lista de desejo"><i class="fa fa-shopping-bag"></i></a></li>
+                <li><a href="" data-tip="Add Carrinho"><i class="fa fa-shopping-cart"></i></a></li>
+            </ul>
+            {% if product.tag %}
+            <span class="product-new-label">{{product.tag}}</span>
+            {% endif %}
+            {% if product.discount %}
+                <span class="product-discount-label">{{product.discount}}%</span>
+            {% endif %}
+        </div>
+        <ul class="rating">
+            <li class="fa fa-star"></li>
+            <li class="fa fa-star"></li>
+            <li class="fa fa-star"></li>
+            <li class="fa fa-star"></li>
+            <li class="fa fa-star disable"></li>
+        </ul>
+        <div class="product-content">
+            <h3 class="title"><a href="#">{{product.name}}</a></h3>
+            {% if product.discount %}
+            <div class="price">R${{"%.2f" %(product.price - (product.price* (product.discount/100)))}}
+                <span>R${{"%.2f" % product.price}}</span>
+            </div>
+            {% else %}
+            <div class="price">R${{"%.2f" %product.price}}</div>
+            {% endif %}
+            <a class="add-to-cart" href="">+ Adicionar ao Carrinho</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endmacro %}
+
+{% macro sale_product_list() %}
+{% for product in sale_products %}
+<div class="col-md-3 col-sm-6">
+    <div class="product-grid">
+        <div class="product-image">
+            <a href="#">
+                <img class="pic-1" src="{{product.thumbnail}}">
+            </a>
+            <ul class="social">
+                <li><a href="" data-tip="Visualizar"><i class="fa fa-search"></i></a></li>
+                <li><a href="" data-tip="lista de desejo"><i class="fa fa-shopping-bag"></i></a></li>
+                <li><a href="" data-tip="Add Carrinho"><i class="fa fa-shopping-cart"></i></a></li>
+            </ul>
+            {% if product.tag %}
+            <span class="product-new-label">{{product.tag}}</span>
+            {% endif %}
+            {% if product.discount %}
+                <span class="product-discount-label">{{product.discount}}%</span>
+            {% endif %}
+        </div>
+        <ul class="rating">
+            <li class="fa fa-star"></li>
+            <li class="fa fa-star"></li>
+            <li class="fa fa-star"></li>
+            <li class="fa fa-star"></li>
+            <li class="fa fa-star disable"></li>
+        </ul>
+        <div class="product-content">
+            <h3 class="title"><a href="#">{{product.name}}</a></h3>
+            {% if product.discount %}
+            <div class="price">R${{"%.2f" %(product.price - (product.price* (product.discount/100)))}}
+                <span>R${{"%.2f" % product.price}}</span>
+            </div>
+            {% else %}
+            <div class="price">R${{"%.2f" %product.price}}</div>
+            {% endif %}
+            <a class="add-to-cart" href="">+ Adicionar ao Carrinho</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
 {% endmacro %}

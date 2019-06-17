@@ -1,7 +1,7 @@
 from Ifood import db
 from sqlalchemy.orm import relationship
 from flask_appbuilder.models.mixins import ImageColumn
-from sqlalchemy import Column, ForeignKey, Integer, Unicode, String, Float
+from sqlalchemy import DateTime, Column, ForeignKey, Integer, Unicode, String, Float
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -27,6 +27,10 @@ class Product(db.Model):
     desc = Column(String(120), index=True)
     thumbnail = Column(ImageColumn(size=(300, 300, True), thumbnail_size=(30, 30, True)))
     price = Column(Float, index=True)
+    discount = Column(Integer, index=True)
+    tag = Column(String(10), index=True)
+    created_at = Column(DateTime)
+    sold = Column(Integer, index=True)
 
 class ProductImage(db.Model):
     product_id = Column(Integer, ForeignKey(Product.id), primary_key=True)
