@@ -92,7 +92,12 @@ def popular_products_list():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    return render_template('Auth/form.html', form=form)
+    return render_template('user/login/form.html', form=form)
+
+@app.route('/produto/id/<id>', methods=['GET'])
+def product_page(id):
+    product_template = Product.query.filter_by(id=id).first_or_404()
+    return render_template("product/page/index.html", product_template=product_template)
 
 @app.route('/produto/cadastro', methods=['GET', 'POST'])
 def product_register():
@@ -129,3 +134,8 @@ def product_register():
 def product_update():
     products = Product.query.all()
     return render_template('product/list/index.html', products=products)
+
+
+@app.route('/usuario/cadastro', methods=['GET', 'POST'])
+def register_client():
+    return render_template('user/cadastro/form.html')

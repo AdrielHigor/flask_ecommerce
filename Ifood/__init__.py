@@ -5,7 +5,7 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user='postgres' ,pw='S3rE5fNEt',url='localhost',db='postgres')
+DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user='postgres' ,pw='123',url='localhost',db='postgres')
 
 UPLOAD_FOLDER = './static/uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])

@@ -1,24 +1,16 @@
-{# myapp/templates/macros.html #}
-
-{% macro nav_link(endpoint, text) %}
-{% if request.endpoint.endswith(endpoint) %}
+{# myapp/templates/macros.html #} {% macro nav_link(endpoint, text) %} {% if request.endpoint.endswith(endpoint) %}
 <li class="nav-item active"><a class="nav-link" href="{{ url_for(endpoint) }}">{{text}}</a></li>
 {% else %}
 <li class="nav-item"><a class="nav-link" href="{{ url_for(endpoint) }}">{{text}}</a></li>
-{% endif %}
-{% endmacro %}
-
-{% macro carousel_number() %}
-{% for product in carousel_products %}
+{% endif %} {% endmacro %} {% macro carousel_number() %} {% for product in carousel_products %}
 <li data-slide-to="{{product.id}}" class="active"></li>
-{% endfor %}
-{% endmacro %}
-
-{% macro carousel_image() %}
+{% endfor %} {% endmacro %} {% macro carousel_image() %}
 <div class="carousel-inner">
     {% for product in carousel_products %}
     <div class="carousel-item {% if loop.index == 1 %} active{% endif %}">
-        <img src="{{product.thumbnail}}" class="d-block w-100" alt="...">
+        <a href="produto/id/{{product.id}}">
+            <img src="{{product.thumbnail}}" class="d-block w-100" alt="...">
+        </a>
         <div class="carousel-caption d-none d-md-block">
             <h5>{{product.name}}</h5>
             <p>{{product.desc}}</p>
@@ -26,27 +18,21 @@
     </div>
     {% endfor %}
 </div>
-{% endmacro %}
-
-{% macro new_product_list() %}
-{% for product in new_products %}
+{% endmacro %} {% macro new_product_list() %} {% for product in new_products %}
 <div class="col-md-3 col-sm-6">
     <div class="product-grid">
         <div class="product-image">
-            <a href="#">
+            <a href="produto/id/{{product.id}}">
                 <img class="pic-1" src="{{product.thumbnail}}">
             </a>
             <ul class="social">
-                <li><a href="" data-tip="Visualizar"><i class="fa fa-search"></i></a></li>
+                <li><a href="produto/id/{{product.id}}" data-tip="Visualizar"><i class="fa fa-search"></i></a></li>
                 <li><a href="" data-tip="lista de desejo"><i class="fa fa-shopping-bag"></i></a></li>
                 <li><a href="" data-tip="Add Carrinho"><i class="fa fa-shopping-cart"></i></a></li>
             </ul>
             {% if product.tag %}
-            <span class="product-new-label">{{product.tag}}</span>
-            {% endif %}
-            {% if product.discount %}
-                <span class="product-discount-label">{{product.discount}}%</span>
-            {% endif %}
+            <span class="product-new-label">{{product.tag}}</span> {% endif %} {% if product.discount %}
+            <span class="product-discount-label">{{product.discount}}%</span> {% endif %}
         </div>
         <ul class="rating">
             <li class="fa fa-star"></li>
@@ -68,28 +54,21 @@
         </div>
     </div>
 </div>
-{% endfor %}
-{% endmacro %}
-
-{% macro popular_product_list() %}
-{% for product in popular_products %}
+{% endfor %} {% endmacro %} {% macro popular_product_list() %} {% for product in popular_products %} {% if product.sold %}
 <div class="col-md-3 col-sm-6">
     <div class="product-grid">
         <div class="product-image">
-            <a href="#">
+            <a href="produto/id/{{product.id}}">
                 <img class="pic-1" src="{{product.thumbnail}}">
             </a>
             <ul class="social">
-                <li><a href="" data-tip="Visualizar"><i class="fa fa-search"></i></a></li>
+                <li><a href="produto/id/{{product.id}}" data-tip="Visualizar"><i class="fa fa-search"></i></a></li>
                 <li><a href="" data-tip="lista de desejo"><i class="fa fa-shopping-bag"></i></a></li>
                 <li><a href="" data-tip="Add Carrinho"><i class="fa fa-shopping-cart"></i></a></li>
             </ul>
             {% if product.tag %}
-            <span class="product-new-label">{{product.tag}}</span>
-            {% endif %}
-            {% if product.discount %}
-                <span class="product-discount-label">{{product.discount}}%</span>
-            {% endif %}
+            <span class="product-new-label">{{product.tag}}</span> {% endif %} {% if product.discount %}
+            <span class="product-discount-label">{{product.discount}}%</span> {% endif %}
         </div>
         <ul class="rating">
             <li class="fa fa-star"></li>
@@ -111,11 +90,7 @@
         </div>
     </div>
 </div>
-{% endfor %}
-{% endmacro %}
-
-{% macro sale_product_list() %}
-{% for product in sale_products %}
+{% endif %} {% endfor %} {% endmacro %} {% macro sale_product_list() %} {% for product in sale_products %} {% if product.discount %}
 <div class="col-md-3 col-sm-6">
     <div class="product-grid">
         <div class="product-image">
@@ -123,16 +98,13 @@
                 <img class="pic-1" src="{{product.thumbnail}}">
             </a>
             <ul class="social">
-                <li><a href="" data-tip="Visualizar"><i class="fa fa-search"></i></a></li>
+                <li><a href="produto/id/{{product.id}}" data-tip="Visualizar"><i class="fa fa-search"></i></a></li>
                 <li><a href="" data-tip="lista de desejo"><i class="fa fa-shopping-bag"></i></a></li>
                 <li><a href="" data-tip="Add Carrinho"><i class="fa fa-shopping-cart"></i></a></li>
             </ul>
             {% if product.tag %}
-            <span class="product-new-label">{{product.tag}}</span>
-            {% endif %}
-            {% if product.discount %}
-                <span class="product-discount-label">{{product.discount}}%</span>
-            {% endif %}
+            <span class="product-new-label">{{product.tag}}</span> {% endif %} {% if product.discount %}
+            <span class="product-discount-label">{{product.discount}}%</span> {% endif %}
         </div>
         <ul class="rating">
             <li class="fa fa-star"></li>
@@ -154,5 +126,4 @@
         </div>
     </div>
 </div>
-{% endfor %}
-{% endmacro %}
+{% endif %} {% endfor %} {% endmacro %}
